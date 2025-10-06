@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!-- ============================================
+     ttyd Launch Agent Template
+     ============================================
+     Copy to: ~/Library/LaunchAgents/com.ttyd.terminal.plist
+     Replace YOUR_USERNAME with your actual username
+     Verify ttyd path with: which ttyd
+     ============================================ -->
+<dict>
+    <key>Label</key>
+    <string>com.ttyd.terminal</string>
+    
+    <key>ProgramArguments</key>
+    <array>
+        <!-- Path to ttyd binary -->
+        <!-- Intel Mac:      /usr/local/bin/ttyd -->
+        <!-- Apple Silicon:  /opt/homebrew/bin/ttyd -->
+        <string>/opt/homebrew/bin/ttyd</string>
+        
+        <!-- Port number -->
+        <string>-p</string>
+        <string>7681</string>
+        
+        <!-- Font size -->
+        <string>-t</string>
+        <string>fontSize=16</string>
+        
+        <!-- Font family (Menlo, Monaco, etc.) -->
+        <string>-t</string>
+        <string>fontFamily=Menlo</string>
+        
+        <!-- Theme colors (JSON format) -->
+        <string>-t</string>
+        <string>theme={"background":"#1e1e1e","foreground":"#d4d4d4","cursor":"#ffffff"}</string>
+        
+        <!-- Launcher script path -->
+        <string>/Users/YOUR_USERNAME/bin/tmux-launcher.sh</string>
+        
+        <!-- Default session name -->
+        <string>claude-code</string>
+    </array>
+    
+    <!-- Start on login -->
+    <key>RunAtLoad</key>
+    <true/>
+    
+    <!-- Restart if crashes -->
+    <key>KeepAlive</key>
+    <true/>
+    
+    <!-- Working directory -->
+    <key>WorkingDirectory</key>
+    <string>/Users/YOUR_USERNAME</string>
+    
+    <!-- Log output -->
+    <key>StandardOutPath</key>
+    <string>/tmp/ttyd.out</string>
+    
+    <key>StandardErrorPath</key>
+    <string>/tmp/ttyd.err</string>
+    
+    <!-- Environment variables -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+</dict>
+</plist>

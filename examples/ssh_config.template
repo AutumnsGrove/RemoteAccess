@@ -1,0 +1,28 @@
+# ============================================
+# SSH Config Template
+# ============================================
+# Copy to: ~/.ssh/config
+# Replace placeholders with your actual values
+
+# Mac Mini via Tailscale
+Host mac-mini
+    HostName YOUR_TAILSCALE_IP    # e.g., 100.x.x.x
+    User YOUR_USERNAME            # e.g., john
+    IdentityFile ~/.ssh/id_ed25519
+    ServerAliveInterval 60
+    ServerAliveCountMax 3
+    Compression yes
+    
+# Shorter alias for quick access
+Host mm
+    HostName YOUR_TAILSCALE_IP
+    User YOUR_USERNAME
+    IdentityFile ~/.ssh/id_ed25519
+
+# ============================================
+# Usage Examples
+# ============================================
+# Connect with: ssh mac-mini
+# Or shorter:    ssh mm
+# Copy file:     scp file.txt mac-mini:~/
+# ============================================
